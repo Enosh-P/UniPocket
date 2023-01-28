@@ -11,12 +11,11 @@ import HeaderContent from '../components/Header.vue'
       <div class="col col-lg-6 mb-4 mb-lg-0">
         <div class="card mb-3" style="border-radius: .5rem;">
           <div class="row g-0">
-            <div class="col-md-4 gradient-custom text-center text-white"
+            <div class="col-md-4 text-center"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
               <img src="../assets/User-img.webp" alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
               <h5 class="titlecase" style="color: #3c3c3c" >{{username}}</h5>
               <p style="color: #3c3c3c">Not Admin</p>
-              <i class="far fa-edit mb-5"></i>
             </div>
             <div class="col-md-8">
               <div class="card-body p-4">
@@ -57,13 +56,11 @@ import Cookies from 'js-cookie'
 export default {
     data() {
         return {
-        username: '',
-        Userid: ''
+        username: Cookies.get('name'),
+        Userid: Cookies.get('uid')
         }
     },
     mounted() {
-      this.username = Cookies.get('name')
-      this.Userid = Cookies.get('uid')
       if (this.Userid){
         axios.get(`http://localhost:8800/users/${this.Userid}`)
         .then(response => {

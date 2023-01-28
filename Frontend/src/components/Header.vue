@@ -6,7 +6,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to bottom, rgba(100, 149, 237, 1) 0%,rgba(100, 149, 237, 1) 100%), 
              linear-gradient(to left, rgba(100, 149, 237, 1) 0%,rgba(100, 149, 237, 1) 100%);">
     <div class="container-fluid">
-        <a class="nav-link navbar-brand" href="/">Project X</a>
+        <a class="nav-link navbar-brand" href="/"><img src="../assets/UniPocket.ico" alt=""></a>
       <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
               data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
               aria-label="Toggle navigation">

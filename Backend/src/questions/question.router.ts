@@ -28,22 +28,16 @@ function SocketQuestionRouter(io: any) {
 
     // DEL: DEL a single question by question ID and secret
     QuestionRouter.delete("/:id", body("secret").isString(), async (request: Request, response: Response) => {
-      const errors = validationResult(request)
-      const { secret } = request.body
-      if (!errors.isEmpty() || !(await compareSecret(secret))) {
-        return response.status(401).json("Authentication required")
+      if (!validationResult(request).isEmpty() || !(await compareSecret(request.body.secret))) {
+        return response.status(401).json("Authentication required");
       }
       const id: number = parseInt(request.params.id, 10)
-      try{
-          const question = await QuestionService.deleteQuestion(id)
-          if (question == null) {
-              return response.status(404).json("Invalid question ID")
-          }
-          io.emit("onQuestionRemoved", question)
-          return response.status(200).json(question)
-      } catch (error: any) {
-          return response.status(500).json(error.message)
-      }
+      const question = await QuestionService.deleteQuestion(id);
+
+      if (!question) return response.status(404).json("Invalid question ID");
+
+      io.emit("onQuestionRemoved", question);
+      return response.status(200).json(question);
     })
   
   // POST: Export Question and Votes
@@ -61,18 +55,10 @@ function SocketQuestionRouter(io: any) {
         return response.status(404).json("Invalid lecture ID.")
       }
       const allQuestions = await QuestionService.listQuestions(lectID, false)
-      let allVotes: any
-      if (typeof allQuestions != undefined && allQuestions.length > 0){
-          for (const question of allQuestions) {
-              const vote = await getVote(question.id, question.author)
-              if (vote){
-                if (allVotes === undefined){
-                    allVotes = [vote]
-                }else{
-                allVotes.push(vote)
-            }
-              }
-          }
+      let allVotes: any[] = []
+      for (const question of allQuestions) {
+        const vote = await getVote(question.id, question.author);
+        if (vote) allVotes.push(vote);
       }
       return response.status(201).json({questions: allQuestions, votes: allVotes});
     } catch (error: any) {
