@@ -1,0 +1,35 @@
+{
+  "name": "project-x",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --port 4200",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite --port 4200"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.8.1",
+    "axios": "^1.2.3",
+    "bootstrap": "^5.3.0-alpha1",
+    "bootstrap-vue": "^2.23.1",
+    "cors": "^2.8.5",
+    "jquery": "^3.6.3",
+    "js-cookie": "^3.0.1",
+    "lodash": "^4.17.21",
+    "mdb-ui-kit": "^6.1.0",
+    "mdbvue": "^6.7.3",
+    "pinia": "^2.0.28",
+    "popper.js": "^1.16.1",
+    "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4",
+    "uuid": "^9.0.0",
+    "vue": "^3.2.45",
+    "vue-axios": "^3.5.2",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.0.0"
+  }
+}

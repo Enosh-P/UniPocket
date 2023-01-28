@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Lecture {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String?
+  questions   Question[]
+  moods       Mood[]
+}
+
+model User {
+  id        Int        @id
+  name      String
+  questions Question[]
+  votes     Vote[]
+  moods     Mood[]
+}
+
+model Question {
+  id           Int      @id @default(autoincrement())
+  lecture      Int
+  lectureName  Lecture  @relation(fields: [lecture], references: [id], onDelete: Cascade)
+  author       Int
+  authorName   User     @relation(fields: [author], references: [id])
+  textContent  String
+  timestamp    DateTime @default(now())
+  isActive     Boolean  @default(value: true)
+  votes        Vote[]
+}
+
+model Vote {
+  user         Int
+  userName     User     @relation(fields: [user], references: [id])
+  question     Int
+  questionStr  Question @relation(fields: [question], references: [id], onDelete: Cascade)
+  vote        Int
+  
+  @@id(name: "uniquefield", fields: [user, question])
+}
+
+model Mood {
+  lecture      Int
+  lectureName  Lecture @relation(fields: [lecture], references: [id], onDelete: Cascade)
+  user         Int
+  userName     User    @relation(fields: [user], references: [id])
+  value        String
+
+  @@id(name: "uniquefield", fields: [user, lecture])
+}
+
+model Authenticator {
+  id      Int      @id @default(autoincrement())
+  user    String   @unique
+  secret  String   
+  pass    String
+}
