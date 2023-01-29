@@ -29,11 +29,11 @@ npm start
 
 ### Home Screen:  
 
-![image](https://user-images.githubusercontent.com/40617986/215296734-6b4f19ff-3d0c-45e3-9caa-8fc12b52b892.png)
+![image](https://user-images.githubusercontent.com/40617986/215318341-7f5e97b2-c8cc-4033-bf6e-7ea58040db53.png)
 
 ### Individual Lecture View:  
 
-![image](https://user-images.githubusercontent.com/40617986/215296729-577cb253-af29-409f-bab4-6e00b1828f39.png)
+![image](https://user-images.githubusercontent.com/40617986/215318361-ac594da7-ea0e-4354-a607-3a7f467b0c66.png)
 
 
 Possible Mobile app format:   https://u517nf.axshare.com/
