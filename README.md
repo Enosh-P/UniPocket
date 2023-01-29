@@ -31,7 +31,7 @@ npm start
 
 ![image](https://user-images.githubusercontent.com/40617986/215296734-6b4f19ff-3d0c-45e3-9caa-8fc12b52b892.png)
 
-### Induvidual Lecture Vuew:  
+### Individual Lecture View:  
 
 ![image](https://user-images.githubusercontent.com/40617986/215296729-577cb253-af29-409f-bab4-6e00b1828f39.png)
 
