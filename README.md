@@ -9,7 +9,7 @@ Fontend is developed using Vue.js and Backend in TS using express. Used Socket.i
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Compile and Hot-Reload
 
 ```sh
 npm start
