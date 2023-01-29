@@ -3,14 +3,19 @@ A Interactive WebApp that helps Student to get info about the available lectures
 
 Fontend is developed using Vue.js and Backend in TS using express. Used Socket.io for handling events and PrismaDB for DB.
 
-To install all packages, Use:
+## Project Setup
 
-`npm install`
+```sh
+npm install
+```
 
-To start server and client, Use:
+### Compile and Hot-Reload for Development
 
-`npm start `
+```sh
+npm start
+```
 
+## Screenshots
 
 Login Page:  
 
