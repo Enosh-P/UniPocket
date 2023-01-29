@@ -18,7 +18,7 @@ Login Page:
 
 Dashboards:  
 
-![image](https://user-images.githubusercontent.com/40617986/215285155-91ce8329-2e85-49e4-b316-f6650aa2f55e.png)
+![image](https://user-images.githubusercontent.com/40617986/215296804-e875e5cd-8b17-4af9-95a7-c27fa7bd8a93.png)
 
 ![image](https://user-images.githubusercontent.com/40617986/215296777-417bcb1f-e0b6-44d1-bbb9-a6754a8ba4cf.png)
 
