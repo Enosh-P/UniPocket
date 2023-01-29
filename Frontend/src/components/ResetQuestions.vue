@@ -7,7 +7,7 @@ import Cookies from 'js-cookie'
   <div v-if="shownotifier" class="fixed-top text-center">
     <p class="notifier">{{errorMsg}}</p>
   </div>
-    <button @click="ResetQues"  type="button" class="btn btn-outline-danger btn-floating" data-mdb-ripple-color="dark"  style="margin: 2px;">
+    <button @click="ResetQues"  type="button" class="btn btn-outline-danger btn-floating changescale" data-mdb-ripple-color="dark"  style="margin: 2px;">
         <i title="Reset Lecture" class="fas fa-sync"></i>
     </button>
   </template>

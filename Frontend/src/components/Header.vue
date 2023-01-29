@@ -3,8 +3,7 @@
 
 <template>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(to bottom, rgba(100, 149, 237, 1) 0%,rgba(100, 149, 237, 1) 100%), 
-             linear-gradient(to left, rgba(100, 149, 237, 1) 0%,rgba(100, 149, 237, 1) 100%);">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(255, 255, 255, 0.5);">
     <div class="container-fluid">
         <a class="nav-link navbar-brand" href="/"><img src="../assets/UniPocket.ico" alt=""></a>
       <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
@@ -16,16 +15,15 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="/">Lectures</a>
+            <a class="nav-link changeBackground" href="/"  style="color: black; border: none;" >Lectures</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/questions">Questions</a>
+            <a class="nav-link changeBackground" href="/questions" style="color: black; border: none;">Questions</a>
           </li>
 
         </ul>
         <div class="dropdown align">
-        <button class="btn btn-outline-danger btn-floating" href="#" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-            <i title="Account" class="fas fa-user"></i>
+        <button  title="Account" class="fas fa-user btn-dark btn-floating" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
         </button>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/dashboard">Profile 
@@ -75,5 +73,16 @@ export default {
 <style scoped>
 .align {
   padding-right: 18px;
+}
+
+.changeBackground {
+  border-radius: 40%;
+  background-color: transparent;
+}
+
+.changeBackground:hover{
+  background-image: url(../assets/bg-more.jpg);
+  background-size: cover;
+  font-weight: bold;
 }
 </style>

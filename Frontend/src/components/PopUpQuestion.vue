@@ -5,12 +5,12 @@ import axios from 'axios'
 
 <template>
 <template v-if="notAdmin">
-    <button type="button"  class="btn btn-outline-success" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#Modal2">
+    <button type="button"  class="btn btn-outline-primary changeBackground" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#Modal2">
         <i class="fas fa-plus me-2"></i>Add New Question</button>
     
     <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content initNowBackground">
           <div class="modal-header">
             <h5 class="modal-title" id="ModalLabel2">Question for lecture {{ lecID }}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -20,7 +20,7 @@ import axios from 'axios'
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="message-text" class="col-form-label">Question:</label>
+                <label for="message-text" class="col-form-label" style="color: black;">Question:</label>
                 <textarea class="large-textarea" v-model="quesCont" id="message-text" placeholder="Enter your question here!"></textarea>
               </div>
               <p class="text-center text-danger error" v-if="errorMessage" >{{ errorMessage }}</p>

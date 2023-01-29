@@ -4,10 +4,10 @@ import Cookies from 'js-cookie'
 </script>
 
 <template>
-  <div v-if="shownotifier" class="fixed-top text-center">
+  <div v-if="showsnotifier" class="fixed-top text-center">
     <p class="notifier">{{errorMsg}}</p>
   </div>
-  <button @click="deleteLQ" type="button" class="btn btn-outline-danger btn-floating" data-mdb-ripple-color="dark" style="margin: 2px;">
+  <button @click="deleteLQ" type="button" class="btn btn-outline-danger btn-floating changescale" data-mdb-ripple-color="dark" style="margin: 2px;">
       <i v-bind:title="title" class="fas fa-trash-alt"></i>
   </button>
 </template>
@@ -30,7 +30,7 @@ export default {
       title: "Detele "+this.delType,
       secret: Cookies.get('secret'),
       userID: Cookies.get('uid'),
-      shownotifier: false
+      showsnotifier: false
     }
   },
   mounted () {
@@ -51,16 +51,16 @@ export default {
         axios.delete(`http://localhost:8800/lectures/${this.delID}`, { data: bdata })
         .then(response => {
           this.errorMsg = `Deleted Lecture ${this.delID} Successfully.`
-          this.shownotifier = true;
+          this.showsnotifier = true;
           setTimeout(() => {
-            this.shownotifier=false
+            this.showsnotifier=false
             this.errorMsg = ''
           }, 2000);
         }, err => {
           this.errorMsg = `Lecture ${this.delID} cannot be deleted.`
-          this.shownotifier = true;
+          this.showsnotifier = true;
           setTimeout(() => {
-            this.shownotifier=false
+            this.showsnotifier=false
             this.errorMsg = ''
           }, 2000);
           console.log(err)
@@ -69,16 +69,16 @@ export default {
         axios.delete(`http://localhost:8800/questions/${this.delID}`, { data: bdata })
         .then(response => {
           this.errorMsg = `Deleted Question ${this.delID} Successfully.`
-          this.shownotifier = true;
+          this.showsnotifier = true;
           setTimeout(() => {
-            this.shownotifier=false
+            this.showsnotifier=false
             this.errorMsg = ''
           }, 2000);
         }, err => {
           this.errorMsg = `Question ${this.delID} cannot be deleted.`
-          this.shownotifier = true;
+          this.showsnotifier = true;
           setTimeout(() => {
-            this.shownotifier=false
+            this.showsnotifier=false
             this.errorMsg = ''
           }, 2000);
           console.log(err)

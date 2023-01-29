@@ -12,16 +12,17 @@ import socket from '../router/socket.listen';
 </script>
 
 <template>
-  <HeaderContent/>
-  <div class="row initBackground" style="display: flex;">
+  <div class="customBack">
+    <HeaderContent/>
+  <div class="row" style="display: flex;">
     <div style="flex: 10; margin-top: 1%; margin-left: 2%;" :class="{customFlex: !notAdmin}">
         <div class="d-flex justify-content-end" v-if="iamadmin">
           <DeleteLQ :delID="lecid" :delType="deletetype"/>
           <ResetQuestions :resetID="lecid"/>
           <PopUpExport :LecID="lecid"/>
         </div>
-    <div class="row initBackground">
-      <div class="card mb-3 initBackground" style="border: none;">
+    <div class="row">
+      <div class="card mb-3" style="border: none; background-color: rgba(255, 255, 255, 0.45);">
         <div>
           <div>
             <span style="color: darkblue; font-weight: bold; font-size: larger;" >Lecture Title:</span>
@@ -51,14 +52,14 @@ import socket from '../router/socket.listen';
             <span style="color: darkblue; font-weight: bold; font-size: larger;" >Description:</span>
             <div class="description" style="margin-left: 20px;">{{ lectureItem.description }}</div>
             <div class="d-flex justify-content-end" style="flex: 1; padding: 15px;">
-              <i class="fas fa-laugh" @click="happy" :class="{selected: nowHappy}" style="border-radius: 15px; font-size: larger;" ></i>
-              <i class="fas fa-meh" @click="neutral" :class="{selected: nowNeutral}" style="border-radius: 15px; font-size: larger;" ></i>
-              <i class="fas fa-sad-cry" @click="sad" :class="{selected: nowSad}" style="border-radius: 15px; font-size: larger;"></i>
+              <i class="fas fa-laugh changescale" @click="happy" :class="{selected: nowHappy}" style="border-radius: 15px; font-size: larger;" ></i>
+              <i class="fas fa-meh changescale" @click="neutral" :class="{selected: nowNeutral}" style="border-radius: 15px; font-size: larger;" ></i>
+              <i class="fas fa-sad-cry changescale" @click="sad" :class="{selected: nowSad}" style="border-radius: 15px; font-size: larger;"></i>
           </div>
           </div>
         </div>
         </div>
-        <div class="card initBackground" style="border: none;">
+        <div class="card" style="border: none; background-color: rgba(255, 255, 255, 0.45);">
           <div>
             <span style="color: darkblue; font-weight: bold; font-size: larger;" >Questions:</span>
           </div>
@@ -81,7 +82,7 @@ import socket from '../router/socket.listen';
     <ChatBot :LecID="lecid"/>
     </div>
   </div>
-  
+  </div>
 </template>
 
 <script>
@@ -229,4 +230,10 @@ export default {
 .customFlex{
   margin: 2%;
 }
+
+.customBack{
+  background-image: url(../assets/background.jpg); 
+  background-size: cover;
+}
+
 </style>

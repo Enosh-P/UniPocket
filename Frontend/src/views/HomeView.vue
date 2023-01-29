@@ -5,7 +5,7 @@ import LectureList from '../components/LectureList.vue'
 
 <template>
   <HeaderContent/>
-  <div class="maincontainer">
+  <div class="maincontainer initNowBackground">
     <div>
     <h2><span>Lectures</span></h2>
   </div>
@@ -22,8 +22,13 @@ import LectureList from '../components/LectureList.vue'
 <style>
 
 h2 span {
-  color: rgb(54, 122, 247);
+  color: black;
   font-weight: 900;
+}
+
+.initNowBackground {
+  background-image: url(../assets/dull_bg.jpg); 
+  background-size: cover;
 }
 
 </style>

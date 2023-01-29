@@ -13,13 +13,11 @@ import 'bootstrap/dist/js/bootstrap.js'
 
 <style>
 .maincontainer{
-  background-color: rgb(240, 243, 244);
+  background-color: rgb(176, 226, 243);
   border-radius: 40px;
   box-sizing: border-box;
   padding:50px;
   margin: 1%;
-  background: linear-gradient(to bottom, rgb(159, 191, 249) 0%,rgb(159, 191, 249) 20%), 
-  linear-gradient(to left, rgb(159, 191, 249) 0%,rgb(159, 191, 249) 20%);
 }
 
 .titlecase {
@@ -44,5 +42,18 @@ import 'bootstrap/dist/js/bootstrap.js'
 .initBackground {
   background: linear-gradient(to bottom, rgb(159, 191, 249) 0%,rgb(159, 191, 249) 20%), 
   linear-gradient(to left, rgb(159, 191, 249) 0%,rgb(159, 191, 249) 20%);
+}
+
+.changeBackground {
+  border-radius: 40%;
+  background-color: transparent;
+  border: none;
+}
+
+.changeBackground:hover{
+  background-image: url(./assets/bg-more.jpg);
+  background-size: cover;
+  font-weight: bold;
+  color: black;
 }
 </style>

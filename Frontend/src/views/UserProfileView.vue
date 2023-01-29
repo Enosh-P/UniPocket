@@ -4,12 +4,12 @@ import HeaderContent from '../components/Header.vue'
 
 <template>
     <HeaderContent/>
-    <div class="maincontainer">
-    <section class="vh-10 initBackground" style="background-color: #f4f5f7;">
-  <div class="container initBackground py-5 h-100">
+    <div class="maincontainer initNowBackground">
+    <section class="vh-10" style="background-color: transparent;">
+  <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-lg-6 mb-4 mb-lg-0">
-        <div class="card mb-3" style="border-radius: .5rem;">
+        <div class="card mb-3" style="border-radius: .5rem; background-color: transparent; border: none;">
           <div class="row g-0">
             <div class="col-md-4 text-center"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">

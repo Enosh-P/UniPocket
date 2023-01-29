@@ -11,18 +11,19 @@ import socket from '../router/socket.listen'
   <template v-if="showLecture">
     <li>
       <div class="row">
-      <div class="container initBackground" style="display: flex; flex-wrap: wrap; align-items: stretch;">
+      <div class="container" style="background-color: rgba(255, 255, 255, 0.45); display: flex; flex-wrap: wrap; align-items: stretch; border-radius: 4%;">
         <div style="flex: 1;">
-          <i class="fas fa-laugh" @click="happy" :class="{selected: nowHappy}" style="border-radius: 15px; font-size: larger;" ></i>
-          <i class="fas fa-meh" @click="neutral" :class="{selected: nowNeutral}" style="border-radius: 15px; font-size: larger;" ></i>
-          <i class="fas fa-sad-cry" @click="sad" :class="{selected: nowSad}" style="border-radius: 15px; font-size: larger;"></i>
+          <i class="fas fa-laugh changescale" @click="happy" :class="{selected: nowHappy}" style="border-radius: 15px; font-size: larger;" ></i>
+          <i class="fas fa-meh changescale" @click="neutral" :class="{selected: nowNeutral}" style="border-radius: 15px; font-size: larger;" ></i>
+          <i class="fas fa-sad-cry changescale" @click="sad" :class="{selected: nowSad}" style="border-radius: 15px; font-size: larger;"></i>
         </div>
-        <div class="accordion accordion-borderless initBackground" :id="id1" style="flex: 13; height: max-content;">
-  <div class="accordion-item initBackground">
-    <h2 class="accordion-header initBackground" :id="id3">
-      <button class="accordion-button initBackground" style="color: rgb(54, 122, 247);" type="button" data-mdb-toggle="collapse"
+        <div class="accordion accordion-borderless" :id="id1" style="flex: 13; height: max-content; background-color: transparent; ">
+  <div class="accordion-item" style="background-color: transparent; ">
+    <h2 class="accordion-header" :id="id3">
+      <button class="accordion-button" style="background-color: transparent;" type="button" data-mdb-toggle="collapse"
         :data-mdb-target="id2h" aria-expanded="true" :aria-controls="id2">
-        {{ lecture.name }}
+        <span class="changescale" style="color: black; font-weight: bolder;">
+        {{ lecture.name }}</span>
       </button>
     </h2>
     <div :id="id2" class="accordion-collapse collapse show"
@@ -30,7 +31,7 @@ import socket from '../router/socket.listen'
       <div class="accordion-body">
         {{ lecture.description }}
         <div style="padding: 3px;">
-        <a class="btn-success btn-rounded" style="padding: 3px; text-decoration: none; margin-right: 1px;" v-bind:href="'/lectures/' + lecture.id">View</a>
+        <a class="btn-success btn-rounded" style="padding: 3px; text-decoration: none; margin-right: 1px;" v-bind:href="'/lectures/' + lecture.id">More</a>
         <template v-if="iamnotadmin">
         <a class="btn-primary btn-rounded" style="padding: 3px; text-decoration: none; margin-right: 1px;" v-bind:href="'/lectures/' + lecture.id">Chat</a>
         </template>
@@ -213,6 +214,14 @@ export default {
 .selected {
   background-color: black;
   color: yellow;
+}
+
+.changescale{
+  background-color: transparent;
+}
+
+.changescale:hover{
+  transform: scale(1.25);
 }
 
 </style>

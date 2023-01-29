@@ -4,7 +4,7 @@ import axios from 'axios'
 </script>
 
 <template>
-    <div class="logincontainer">
+    <div class="logincontainer"  style="background-color: rgba(255, 255, 255, 0.45);">
     <!-- Pills navs -->
     <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
       <li class="nav-item" role="presentation">

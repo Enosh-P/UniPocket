@@ -7,12 +7,12 @@ import Cookies from 'js-cookie';
 
 <template>
     <HeaderContent/>
-    <div class="maincontainer">
-    <section class="vh-10 initBackground" style="background-color: #f4f5f7;">
-  <div class="container initBackground py-5 h-100">
+    <div class="maincontainer initNowBackground">
+    <section class="vh-10 " style="background-color: transparent;">
+  <div class="container  py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-lg-6 mb-4 mb-lg-0">
-        <div class="card" style="border-radius: .5rem;">
+        <div class="card" style="border-radius: .5rem; background-color: rgba(255, 255, 255, 0.45); border: none;">
           <div class="row">
             <div class="col-md-4 gradient-custom text-center"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
@@ -34,10 +34,10 @@ import Cookies from 'js-cookie';
                 <hr class="mt-0 mb-4">
                 <div class="mb-2">
                     <PopUpAdd/>
-                    <button type="button" @click="showAlertExport" class="btn btn-outline-success" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark">Export Questions</button>
-                    <button type="button" @click="showAlertReset" class="btn btn-outline-success" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark">Reset Questions</button>
-                    <button type="button" @click="showAlertlecture" class="btn btn-outline-success" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark">Delete Lecture</button>
-                    <button type="button" @click="showAlertQuestion" class="btn btn-outline-success" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark">Delete Question</button>
+                    <button type="button" @click="showAlertExport" class="btn btn-outline-primary changeBackground" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark">Export Questions</button>
+                    <button type="button" @click="showAlertReset" class="btn btn-outline-primary changeBackground" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark">Reset Questions</button>
+                    <button type="button" @click="showAlertlecture" class="btn btn-outline-primary changeBackground" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark">Delete Lecture</button>
+                    <button type="button" @click="showAlertQuestion" class="btn btn-outline-primary changeBackground" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark">Delete Question</button>
                 </div>
               </div>
             </div>

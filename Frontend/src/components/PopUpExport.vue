@@ -4,12 +4,12 @@ import axios from 'axios'
 </script>
 
 <template>
-    <button class="btn btn-outline-success" @click="ExportQuestions" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#Modal2" title="Export Questions">
+    <button class="btn btn-outline-success changescale" @click="ExportQuestions" style="margin: 4px; border-radius: 35px;" data-mdb-ripple-color="dark" data-toggle="modal" data-target="#Modal2" title="Export Questions">
       <i class="fas fa-arrow-circle-down"></i>
     </button>
     <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalLabel2" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
+        <div class="modal-content initNowBackground">
           <div class="modal-header">
             <h5 class="modal-title" id="ModalLabel2">Export Questions and Votes</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -19,7 +19,7 @@ import axios from 'axios'
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="Exporttext" class="col-form-label">Exported JSON:</label>
+                <label for="Exporttext" class="col-form-label"  style="color: black;">Exported JSON:</label>
                 <textarea class="large-textarea" id="Exporttext" readonly></textarea>
               </div>
             </form>

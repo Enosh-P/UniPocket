@@ -5,17 +5,17 @@ import Cookies from 'js-cookie'
 
 <template>
 <template v-if="notAdmin">
-<div class="card initBackground" style="margin-top: 5%; margin-right: 3%;">
+<div class="card" style="margin-top: 5%; margin-right: 3%; background-color: transparent; border: none;">
   <div class="card-header">
     <h5 class="mb-0" style="color: darkblue; font-weight: bold; font-size: larger;">Chat</h5>
   </div>
-  <div class="card-body initBackground" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+  <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 450px">
     <div class="d-flex flex-row justify-content-start">
-    <textarea class="form-control initBackground" style="border: none;" name="msg" id="readSpace" readonly rows="15"></textarea>
+    <textarea class="form-control" style="border: none; background-color: rgba(255, 255, 255, 0.3)" name="msg" id="readSpace" readonly rows="16"></textarea>
     </div>
   </div>
   <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-    <input style="border: none;" type="text" v-model="UserMsg" v-on:keydown.enter="getChatdata" class="form-control initBackground" id="writingSpace" placeholder="Type message">
+    <input style="border: none; background-color: rgba(255, 255, 255, 0.3)" type="text" v-model="UserMsg" v-on:keydown.enter="getChatdata" class="form-control" id="writingSpace" placeholder="Type message">
   </div>
 </div>
 </template>

@@ -9,20 +9,20 @@ import socket from '../router/socket.listen'
   <template v-if="showQuestion">
     <li>
       <div class="row">
-      <div class="container" style="display: flex; flex-wrap: wrap; align-items: stretch;">
+      <div class="container " style="background-color: transparent; display: flex; flex-wrap: wrap; align-items: stretch;">
         <div style="flex: 1;">
           <div style="flex: 1;">
-            <i class="far fa-thumbs-up" @click="upvote" :class="{upvotedC: upvoted}" style="border-radius: 15px; padding: 7px; text-align:left"></i>
+            <i class="far fa-thumbs-up changescale" @click="upvote" :class="{upvotedC: upvoted}" style="border-radius: 15px; padding: 7px; text-align:left"></i>
           </div>
           <div style="flex: 1;">
           <span style="text-align:center">{{ question.votes }}</span>
           </div>
           <div style="flex: 1;">
-            <i class="far fa-thumbs-down" @click="downvote" :class="{downvotedC: downvoted}" style="border-radius: 15px; padding: 7px; text-align:right"></i>
+            <i class="far fa-thumbs-down changescale" @click="downvote" :class="{downvotedC: downvoted}" style="border-radius: 15px; padding: 7px; text-align:right"></i>
           </div>
         </div>
         <div style="flex: 15; height: max-content;">
-          <a href="#" style="text-decoration: none;">{{ question.textContent }}</a>
+          <a href="#" style="text-decoration: none; color: black">{{ question.textContent }}</a>
         </div>
         <div v-if="iamadmin" style="flex: 1">
           <DeleteLQ :delID="question.id" :delType="deltype"/>

@@ -8,13 +8,13 @@ import Cookies from "js-cookie"
 
 <template>
   <HeaderContent/>
-  <div class="maincontainer">
+  <div class="maincontainer initNowBackground">
   <div>
     <h2><span>Questions</span></h2>
     <ul style="list-style-type: none;">
-        <div class="row initBackground" v-for="lecture in allLectures">
-          <div class="card  mb-3 initNowBackground">
-            <h4><span><a style="padding: 3px;" v-bind:href="'/lectures/' + lecture.id">Lecture {{ lecture.id }}</a></span></h4>
+        <div class="row" v-for="lecture in allLectures">
+          <div class="card  mb-3" style="background-color: rgba(255, 255, 255, 0.2); border: none;">
+            <h4><span><a style="padding: 3px;" v-bind:href="'/lectures/' + lecture.id"><button  class="btn changeNowBackground">Lecture {{ lecture.id }}</button></a></span></h4>
             <QuestionList :lecid="lecture.id"/>
           </div>
         </div>
@@ -53,8 +53,20 @@ export default {
 
 </script>
 <style scoped>
-.initNowBackground {
-  background: linear-gradient(to bottom, rgb(185, 206, 244) 0%,rgb(185, 206, 244) 20%), 
-  linear-gradient(to left, rgb(185, 206, 244) 0%,rgb(185, 206, 244) 20%);
+
+.changeNowBackground {
+  border-radius: 40%;
+  background-color: transparent;
+  font-weight: bold;
+  box-shadow: 20%;
+  color: black;
+  border: none;
 }
+
+.changeNowBackground:hover{
+  transform: scale(1.25);
+  font-weight: bold;
+  color: black;
+}
+
 </style>
