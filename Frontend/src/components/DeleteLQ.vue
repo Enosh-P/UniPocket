@@ -50,8 +50,8 @@ export default {
       if (this.delType === 'lectures'){
         axios.delete(`http://localhost:8800/lectures/${this.delID}`, { data: bdata })
         .then(response => {
-          this.errorMsg = `Deleted Lecture ${this.delID} Successfully.`
           this.showsnotifier = true;
+          this.errorMsg = `Deleted Lecture ${this.delID} Successfully.`
           setTimeout(() => {
             this.showsnotifier=false
             this.errorMsg = ''

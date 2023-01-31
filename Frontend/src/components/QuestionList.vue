@@ -25,7 +25,8 @@ export default {
     return {
         allQuestions: [],
         Userid: Cookies.get('uid'),
-        socket: socket
+        socket: socket,
+        iamadmin: Cookies.get('secret')
     }
   },
   mounted () {
@@ -60,13 +61,15 @@ export default {
 
           const votesPromises = this.allQuestions.map(async obj => {
             const voteResponse = await axios.get(`http://localhost:8800/votes/${obj.id}`);
-            const uservoteresponse = await axios.get(`http://localhost:8800/votes/${obj.id}/${this.Userid}`)
             let upvoted = false
             let downvoted = false
+            if (!this.iamadmin){
+            const uservoteresponse = await axios.get(`http://localhost:8800/votes/${obj.id}/${this.Userid}`)
             if (uservoteresponse.data.vote === 1){
               upvoted = true
             } else if (uservoteresponse.data.vote === -1){
               downvoted = true
+            }
             }
             const voteCount = voteResponse.data.upVotes - voteResponse.data.downVotes;
             return {...obj, votes: voteCount, upvoted:upvoted, downvoted: downvoted};
