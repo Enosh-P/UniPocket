@@ -1,4 +1,4 @@
-# Project-X
+# Uin-Pocket
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -22,6 +22,9 @@ npm install
 npm run dev
 ```
 
+```sh
+npm start
+```
 ### Compile and Minify for Production
 
 ```sh
