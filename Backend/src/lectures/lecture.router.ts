@@ -43,7 +43,7 @@ function SocketLectureRouter(io: any) {
             if (lecture == null) {
                 return response.status(404).json("Invalid lecture ID")
             }
-            io.emit("onLectureReset", null)
+            io.emit("onLectureReset", {lecture: id})
             return response.status(200).json(lecture)
         } catch (error: any) {
             return response.status(500).json(error.message)

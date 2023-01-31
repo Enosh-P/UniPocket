@@ -1,6 +1,7 @@
 <script setup>
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import socket from '../router/socket.listen';
 </script>
 
 <template>
@@ -9,11 +10,9 @@ import Cookies from 'js-cookie'
   <div class="card-header">
     <h5 class="mb-0" style="color: darkblue; font-weight: bold; font-size: larger;">Chat</h5>
   </div>
-  <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 450px">
-    <div class="d-flex flex-row justify-content-start">
-    <textarea class="form-control" style="border: none; background-color: rgba(255, 255, 255, 0.3)" name="msg" id="readSpace" readonly rows="16"></textarea>
+  <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 450px; overflow: auto;">
+    <div class="form-control" style="background-color: transparent; border: none;" id="readSpace"></div>
     </div>
-  </div>
   <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
     <input style="border: none; background-color: rgba(255, 255, 255, 0.3)" type="text" v-model="UserMsg" v-on:keydown.enter="getChatdata" class="form-control" id="writingSpace" placeholder="Type message">
   </div>
@@ -35,7 +34,7 @@ export default {
       userID: Cookies.get('uid'),
       notAdmin: Cookies.get('uid') != 0,
       UserMsg: '',
-      dataReceived: ''
+      socket: socket,
     }
   },
   mounted () {
@@ -48,20 +47,43 @@ export default {
         window.location.reload();
       })
     }
+    this.socket.on("onChatMessage", data =>{
+      if (this.LecID == data.lecture){
+        const textarea = document.getElementById("readSpace");
+        const div = document.createElement("div");
+        div.className = "useStylechat"
+        const span = document.createElement("span");
+        const br = document.createElement("br");
+        span.innerText = data.user.name;
+        const hue = Math.round((data.user.id / 100) * 360);
+        span.style.color = `hsl(${hue}, 100%, 50%)`;
+        div.appendChild(span)
+        div.innerHTML += ": "+data.message;
+        div.appendChild(br);
+        textarea.appendChild(div);
+      }
+    })
   },
   methods: {
     getChatdata() {
-      var recMsg = document.getElementById("readSpace")
+      if (this.UserMsg){
       const bdata={message: this.UserMsg}
       axios.post(`http://localhost:8800/users/${this.userID}/${this.LecID}/chat`, bdata)
       .then(response => {
-        recMsg.value += '<span style="color: darkred;">this.userName</span>' + ': '+this.UserMsg + '\n'
         this.UserMsg = ''
-        this.dataReceived = response.data
       }, err => {
         console.log(err)
       })
       }
+      }
     }
 }
 </script>
+
+<style>
+.useStylechat{
+  border: none; 
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+</style>

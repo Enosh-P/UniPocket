@@ -47,6 +47,10 @@ export default {
     this.socket.on('onLectureReset', data => {
       window.location.reload()
     })
+
+    this.socket.on('onQuestionVotesChange', data => {
+      this.getQuestionsandVotes()
+    })
   },
   methods: {
     async  getQuestionsandVotes() {
@@ -56,10 +60,19 @@ export default {
 
           const votesPromises = this.allQuestions.map(async obj => {
             const voteResponse = await axios.get(`http://localhost:8800/votes/${obj.id}`);
+            const uservoteresponse = await axios.get(`http://localhost:8800/votes/${obj.id}/${this.Userid}`)
+            let upvoted = false
+            let downvoted = false
+            if (uservoteresponse.data.vote === 1){
+              upvoted = true
+            } else if (uservoteresponse.data.vote === -1){
+              downvoted = true
+            }
             const voteCount = voteResponse.data.upVotes - voteResponse.data.downVotes;
-            return {...obj, votes: voteCount};
+            return {...obj, votes: voteCount, upvoted:upvoted, downvoted: downvoted};
           });
           this.allQuestions = await Promise.all(votesPromises);
+          this.allQuestions.sort((a, b) => b.votes - a.votes);
 
         } catch (err) {
           console.log(err);

@@ -78,7 +78,15 @@ export default {
   },
   methods: {
     submitAdminForm() {
-      const bdata = {
+      if (!this.username || !this.password){
+        this.errorMessage = "Provide a username and password!"
+        this.username = '';
+        this.password = '';
+        setTimeout(() => {
+            this.errorMessage = '';
+          }, 2000);
+      }else{
+        const bdata = {
         user: this.username, 
         pass: this.password 
       }
@@ -97,9 +105,16 @@ export default {
           }, 4000)
         console.log(err)
       })
+      }
     },
     submitUserForm() {
-      if (this.username === 'admin'){
+      if (!this.username){
+        this.errorMessage = "Provide a username!"
+        setTimeout(() => {
+            this.errorMessage = '';
+            this.username = '';
+          }, 2000);
+      }else if (this.username === 'admin'){
       this.errorMessage = "You cant be Admin :/"
       setTimeout(() => {
           this.errorMessage = '';

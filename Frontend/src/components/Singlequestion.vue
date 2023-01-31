@@ -12,13 +12,13 @@ import socket from '../router/socket.listen'
       <div class="container " style="background-color: transparent; display: flex; flex-wrap: wrap; align-items: stretch;">
         <div style="flex: 1;">
           <div style="flex: 1;">
-            <i class="far fa-thumbs-up changescale" @click="upvote" :class="{upvotedC: upvoted}" style="border-radius: 15px; padding: 7px; text-align:left"></i>
+            <i class="far fa-thumbs-up changescale" @click="upvote" :class="{upvotedC: question.upvoted}" style="border-radius: 15px; padding: 7px; text-align:left"></i>
           </div>
           <div style="flex: 1;">
           <span style="text-align:center">{{ question.votes }}</span>
           </div>
           <div style="flex: 1;">
-            <i class="far fa-thumbs-down changescale" @click="downvote" :class="{downvotedC: downvoted}" style="border-radius: 15px; padding: 7px; text-align:right"></i>
+            <i class="far fa-thumbs-down changescale" @click="downvote" :class="{downvotedC: question.downvoted}" style="border-radius: 15px; padding: 7px; text-align:right"></i>
           </div>
         </div>
         <div style="flex: 15; height: max-content;">
@@ -38,8 +38,8 @@ export default {
   props: ['question'],
   data: function() {
     return {
-      upvoted: false,
-      downvoted: false,
+      up: false,
+      down: false,
       showQuestion: true,
       iamadmin: Cookies.get('secret'),
       userID: Cookies.get('uid'),
@@ -59,14 +59,6 @@ export default {
         window.location.reload();
       })
     }
-    
-    this.getVote()
-    
-    this.socket.on('onQuestionVotesChange', data => {
-      if (this.question.id === data.id){
-        this.question.votes = data.upVotes-data.downVotes
-      }
-    })
 
     this.socket.on('onQuestionRemoved', data => {
       if (this.question.id === data.id){
@@ -83,37 +75,14 @@ export default {
           console.log(err)
       }
     },
-    async getVote () {
-      try{
-        const uservoteresponse = await axios.get(`http://localhost:8800/votes/${this.question.id}/${this.userID}`)
-        if (uservoteresponse.data.vote === 1){
-        this.userVote = 1
-        this.upvoted = true
-        this.downvoted = false
-      } else if (uservoteresponse.data.vote === -1){
-        this.userVote = -1
-        this.upvoted = false
-        this.downvoted = true
-      }else {
-        this.upvoted = false
-        this.downvoted = false
-      }
-      }catch (err){
-          console.log(err)
-      }
-    },
     upvote: function() {
       if (!this.iamadmin){
-        this.upvoted = true;
-        this.downvoted = false;
         this.userVote = 1
         this.addVote()
       }
     },
     downvote: function() {
       if (!this.iamadmin){
-        this.downvoted = true;
-        this.upvoted = false;
         this.userVote = -1
         this.addVote()
         }

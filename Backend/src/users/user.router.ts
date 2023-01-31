@@ -85,7 +85,8 @@ function SocketUserRouter(io: any) {
         if (findlecture == null){
           return response.status(404).json("Invalid lecture ID.")
         }
-        io.emit("onChatMessage", {user: {id: finduser.id, name: finduser.name}, message: message})
+        const currentTimestamp = new Date().toLocaleString();
+        io.emit("onChatMessage", {user: {id: finduser.id, name: finduser.name}, message: message, lecture: lectureid, timestamp:currentTimestamp})
         const chatMsg: ChatResponse = {lecture: lectureid, user: userid, message:message}
         return response.status(201).json(chatMsg)
       } catch (error: any) {
